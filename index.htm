@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    
+
+    <script>
+        // A function is a piece of code that performs a given task
+
+        // A function executes when  "something" invokes(call) it.
+
+
+        /*
+        Syntax: function myFunction(x, y, z...) { ... }
+        */
+       /*
+         Why Functions?
+       ----------------
+      With functions you can reuse code
+
+     You can write code that can be used many times.
+
+    You can use the same code with different arguments, to produce different results.
+       */
+
+
+       
+
+        function sum(x, y){
+            return x + y;
+        }
+        function witgoutArgument(){
+            return "RC";
+        }
+
+
+        const obj = sum(-4, -3)
+        console.log("sum of given no is:",obj)
+
+
+
+        const withoutArg = witgoutArgument()
+
+        console.log("Your nam is :",withoutArg)
+
+
+
+
+
+
+
+
+        function fullName(firstName, lasName){
+            return  firstName + " " +lasName;
+        }
+
+
+        
+        console.log("My name is:", fullName('vijay', 'rajput'))
+
+
+
+        function userDetails(user){
+            return user?.firstName + " " + user?.lastName + " " + user.age + " " + user.mark;
+        }
+
+        const user = {
+            firstName:"vijay",
+            lastName:"rajput",
+            age:"28",
+            mark:80,
+        }
+        const userdtails = userDetails(user)
+        console.log("User details is:",userdtails)
+
+
+
+
+    </script>
+</body>
+</html>
