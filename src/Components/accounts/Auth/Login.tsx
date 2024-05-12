@@ -16,7 +16,7 @@ const Login = ({}: Props) => {
         setFields({...fields, [e.target.name]: e.target.name==="rememberMe" ?e.target.checked: e.target.value})
 
     }
-    const handleSubmit =  (e:FormEvent<HTMLFormElement>) => {
+    const handleSubmit =  async (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log('Login', fields)
         setFields(DEFAULT_DEFAULT_OPTIONS)

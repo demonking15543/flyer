@@ -1,17 +1,23 @@
+"use server";
 import Login from '@/Components/accounts/Auth/Login'
 import { cookies } from 'next/headers'
 import React from 'react'
 
-type Props = {}
+const handleSetUser =  async (user:string)=>{
+    
 
-const page = (props: Props) => {
+    console.log('user', user)
+    return null;
+
+}
+
+const page = () => {
     const cookieStore = cookies()
-  const theme = cookieStore.get('theme')
-  console.log("theme123330", theme
-)
+  
+
 
   return (
-    <Login/>
+    <Login />
   )
 }
 export default page
