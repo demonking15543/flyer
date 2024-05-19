@@ -1,6 +1,8 @@
+'use client'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
-
+import { useCookies } from 'react-cookie'
 
 type Props = {}
 
@@ -36,7 +38,25 @@ const NAVIGATION = [
 
 ]
 
+type  user = {
+  username: string,
+  password: string,
+  remberMe:boolean
+}
+
 export default function Navbar({}: Props) {
+const [cookies, setCookie, removeCookie] = useCookies(['user'])
+const router = useRouter()
+const user = cookies.user
+
+const handleRemove = () => {
+  removeCookie('user');
+  router.push('/login')
+
+};
+
+
+
   return (
 <header className="text-gray-600 body-font sticky top-0 z-50">
   <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -49,11 +69,17 @@ export default function Navbar({}: Props) {
     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
       {
         NAVIGATION.map((item)=>(
+          user?.username && item.label==="Login"? 
+          <span role='button' onClick={handleRemove} className="mr-5 hover:text-gray-900">Logout</span>
+          :
+
           <Link href={item.to} className="mr-5 hover:text-gray-900">{item.label}</Link>
 
 
         ))
-      }
+ 
+      }   
+
       
 
     </nav>

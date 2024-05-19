@@ -12,7 +12,6 @@ const handleSetUser =  async (user:string)=>{
 }
 
 const page = () => {
-    const cookieStore = cookies()
   
 
 

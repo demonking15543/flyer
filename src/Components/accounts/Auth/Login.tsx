@@ -1,6 +1,6 @@
 "use client"
+import { useRouter } from 'next/navigation'
 import React, { ChangeEvent, FormEvent, useState } from 'react'
-
 type Props = {}
 
 const DEFAULT_DEFAULT_OPTIONS = {
@@ -11,6 +11,7 @@ const DEFAULT_DEFAULT_OPTIONS = {
 
 const Login = ({}: Props) => {
     const [fields, setFields] = useState(DEFAULT_DEFAULT_OPTIONS)
+    const router = useRouter()
 
     const handleChange =  (e:ChangeEvent<HTMLInputElement>) => {
         setFields({...fields, [e.target.name]: e.target.name==="rememberMe" ?e.target.checked: e.target.value})
@@ -19,7 +20,19 @@ const Login = ({}: Props) => {
     const handleSubmit =  async (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log('Login', fields)
-        setFields(DEFAULT_DEFAULT_OPTIONS)
+        // setFields(DEFAULT_DEFAULT_OPTIONS)
+
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(fields),
+          })
+       
+          if (response.ok) {
+            router.push('/profile')
+          } else {
+            console.log(response)
+          }
 
 
     }
