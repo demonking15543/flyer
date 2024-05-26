@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@boiseitguru/cookie-cutter": "^0.2.3",
+    "mongoose": "^8.4.0",
     "next": "14.2.3",
     "react": "^18",
     "react-cookie": "^7.1.4",
